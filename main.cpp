@@ -1,14 +1,37 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <limits>
 // print function that takes a generic type and prints it
 
 using namespace std;
+enum class Color
+{
+    RED,
+    BLUE,
+    GREEN
+};
 template <typename T>
 
 void print(T value)
 {
     cout << value << "\n";
+}
+
+// Helper function to convert Color enum to string
+const char *colorToString(Color c)
+{
+    switch (c)
+    {
+    case Color::RED:
+        return "RED";
+    case Color::GREEN:
+        return "GREEN";
+    case Color::BLUE:
+        return "BLUE";
+    default:
+        return "UNKNOWN";
+    }
 }
 
 int main()
@@ -17,10 +40,13 @@ int main()
     double b = 3.0;
     char c[] = "hello";
     short test = 0b010101; // 21
-    short test1 = 123123;
+    short test1 = 2048;
     cout << a << " " << b << " " << c << "\n";
     cout << test << "\n";
     cout << test1 << "\n";
+
+    // print maximum number of a short
+    cout << std::numeric_limits<short>::max() << "\n";
 
     auto somethingElse = 9;
     print(test1);
@@ -43,5 +69,10 @@ int main()
         cout << empty_dynamic_array[i] << " ";
     }
 
+    auto color = Color::BLUE;
+
+    // print color
+    cout << "\n"
+         << colorToString(color) << "\n";
     return 0;
 }
