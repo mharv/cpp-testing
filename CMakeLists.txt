@@ -5,7 +5,12 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 # Project name and language
-project(MyProject CXX)
+project(template CXX)
+
+# message("Your C++ compiler supports these C++ features:")
+# foreach(i ${CMAKE_CXX_COMPILE_FEATURES})
+#   message("${i}")
+# endforeach()
 
 # Create a variable with the source files using GLOB
 file(GLOB SOURCE_FILES "src/*.cpp")

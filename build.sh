@@ -12,7 +12,7 @@ mkdir -p "$BUILD_DIR" || exit 1
 cd "$BUILD_DIR" || exit 1
 
 # Run CMake to configure the project
-cmake "$SCRIPT_DIR"
+cmake "$SCRIPT_DIR" -DCMAKE_CXX_COMPILER=clang++
 
 # Run Make to build the project
 make
