@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <limits>
-// print function that takes a generic type and prints it
+#include "test.hpp"
 
 using namespace std;
 enum class Color
@@ -10,6 +10,13 @@ enum class Color
     RED,
     BLUE,
     GREEN
+};
+
+enum class Animal
+{
+    HORSE,
+    COW,
+    DOG,
 };
 template <typename T>
 
@@ -33,6 +40,19 @@ const char *colorToString(Color c)
         return "UNKNOWN";
     }
 }
+
+struct S1
+{
+    int b1 : 10; // range [0, 1023]
+    int b2 : 10; // range [0, 1023]
+    int b3 : 8;  // range [0, 255]
+};               // sizeof(S1): 4 bytes
+struct S2
+{
+    int b1 : 10;
+    int : 0;     // reset: force the next field
+    int b2 : 10; // to start at bit 32
+};
 
 int main()
 {
@@ -74,5 +94,19 @@ int main()
     // print color
     cout << "\n"
          << colorToString(color) << "\n";
+
+    auto test3 = false ? Color::GREEN : Color::BLUE;
+    cout << colorToString(test3) << "\n";
+
+    cout << sizeof(S1) << "\n";
+    cout << sizeof(S2) << "\n";
+
+    for (int i : empty_dynamic_array)
+    {
+        cout << char(i) << " ";
+    }
+
+    cout << "\n";
+    cout << Test::get_name() << "\n";
     return 0;
 }
