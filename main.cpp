@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <limits>
+#include <algorithm>
 #include "test.hpp"
 
 using namespace std;
@@ -108,5 +109,7 @@ int main()
 
     cout << "\n";
     cout << Test::get_name() << "\n";
+
+    cout << std::max({010, 10, 0X10, 0B10}) << '\n';
     return 0;
 }
